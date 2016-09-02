@@ -8,12 +8,12 @@ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=c99")
 find_package(OpenCV REQUIRED)
 
 # Adding all wrappers
-file(GLOB source_mBGS w_mlayerBGS.cpp)
-file(GLOB source_adaptBGS w_adapBGS.cpp)
-file(GLOB source_eigenBGS w_DPEigenbackgroundBGS.cpp)
-file(GLOB source_wrenGABAGS w_DPWrenGABGAS.cpp)
-file(GLOB source_adaptSOM w_LBAdaptiveSOM.cpp)
-file(GLOB source_LBMoG w_LBMoG.cpp)
+file(GLOB source_mBGS ../example_macosx/w_mlayerBGS.cpp)
+file(GLOB source_adaptBGS ../example_macosx/w_adapBGS.cpp)
+file(GLOB source_eigenBGS ../example_macosx/w_DPEigenbackgroundBGS.cpp)
+file(GLOB source_wrenGABAGS ../example_macosx/w_DPWrenGABGAS.cpp)
+file(GLOB source_adaptSOM ../example_macosx/w_LBAdaptiveSOM.cpp)
+file(GLOB source_LBMoG ../example_macosx/w_LBMoG.cpp)
 file(GLOB_RECURSE bgs_src ../package_bgs/*.cpp ../package_bgs/*.c)
 file(GLOB_RECURSE bgs_include ../package_bgs/*.h)
 
