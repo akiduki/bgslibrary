@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 2.8)
 
-project(FrameDifferenceTest)
+project(BGSPythonWrapper)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=gnu++0x")
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=c99")
@@ -44,7 +44,7 @@ target_link_libraries(adaptBGS ${OpenCV_LIBS} bgs)
 add_library(wrenBGS SHARED ${source_wrenGABAGS})
 target_link_libraries(wrenBGS ${OpenCV_LIBS} bgs)
 add_library(lbMoG SHARED ${source_LBMoG})
-target_link_libraries(libMoG ${OpenCV_LIBS} bgs)
+target_link_libraries(lbMoG ${OpenCV_LIBS} bgs)
 add_library(adaptSOM SHARED ${source_adaptSOM})
 target_link_libraries(adaptSOM ${OpenCV_LIBS} bgs)
 add_library(eigenBGS SHARED ${source_eigenBGS})

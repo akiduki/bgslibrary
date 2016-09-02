@@ -37,6 +37,7 @@ class BackGroundModel(object):
 
     # to be adaptive changed
     def setParameters(self, param):
+        args, _, _ = inspect.getargs(self.bgMethod.setParameters)
         self.bgMethod.setParameters(param['firstTime'], param['showOutput'], 
                                     param['saveModel'], param['disableDetectMode'],
                                     param['disableLearning'], param['preload_model'])
