@@ -27,6 +27,13 @@ AdaptiveBackgroundLearning::~AdaptiveBackgroundLearning()
   std::cout << "~AdaptiveBackgroundLearning()" << std::endl;
 }
 
+void AdaptiveBackgroundLearning::setParameters(const parameters_t _param)
+{
+    firstTime = _param.firstTime;
+    showForeground = _param.showForeground;
+    showBackground = _param.showBackground;
+}
+
 void AdaptiveBackgroundLearning::process(const cv::Mat &img_input, cv::Mat &img_output, cv::Mat &img_bgmodel)
 {
   if(img_input.empty())

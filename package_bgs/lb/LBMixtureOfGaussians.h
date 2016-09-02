@@ -46,6 +46,7 @@ public:
   LBMixtureOfGaussians();
   ~LBMixtureOfGaussians();
 
+  void setParameters(const parameters_t _param);
   void process(const cv::Mat &img_input, cv::Mat &img_output, cv::Mat &img_bgmodel);
   //void finish(void);
 

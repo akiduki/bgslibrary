@@ -27,6 +27,12 @@ LBMixtureOfGaussians::~LBMixtureOfGaussians()
   std::cout << "~LBMixtureOfGaussians()" << std::endl;
 }
 
+void LBMixtureOfGaussians::setParameters(const parameters_t _param)
+{
+  firstTime = _param.firstTime;
+  showOutput = _param.showOutput;
+}
+
 void LBMixtureOfGaussians::process(const cv::Mat &img_input, cv::Mat &img_output, cv::Mat &img_bgmodel)
 {
   if(img_input.empty())

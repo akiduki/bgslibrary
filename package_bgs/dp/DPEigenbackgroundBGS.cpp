@@ -26,6 +26,13 @@ DPEigenbackgroundBGS::~DPEigenbackgroundBGS()
   std::cout << "~DPEigenbackgroundBGS()" << std::endl;
 }
 
+void DPEigenbackgroundBGS::setParameters(const parameters_t _param)
+{
+  firstTime = _param.firstTime;
+  showOutput = _param.showOutput;
+  historySize = _param.learningFrames;
+}
+
 void DPEigenbackgroundBGS::process(const cv::Mat &img_input, cv::Mat &img_output, cv::Mat &img_bgmodel)
 {
   if(img_input.empty())

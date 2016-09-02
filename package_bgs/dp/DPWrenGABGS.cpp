@@ -16,7 +16,7 @@ along with BGSLibrary.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "DPWrenGABGS.h"
 
-DPWrenGABGS::DPWrenGABGS() : firstTime(true), frameNumber(0), threshold(12.25f), alpha(0.005f), learningFrames(30), showOutput(true)
+DPWrenGABGS::DPWrenGABGS() : firstTime(true), frameNumber(0), threshold(12.25f), alpha(0.005f), learningFrames(30), showOutput(false)
 {
   std::cout << "DPWrenGABGS()" << std::endl;
 }
@@ -24,6 +24,13 @@ DPWrenGABGS::DPWrenGABGS() : firstTime(true), frameNumber(0), threshold(12.25f),
 DPWrenGABGS::~DPWrenGABGS()
 {
   std::cout << "~DPWrenGABGS()" << std::endl;
+}
+
+void DPWrenGABGS::setParameters(const parameters_t _param)
+{
+  firstTime = _param.firstTime;
+  showOutput = _param.showOutput;
+  learningFrames = _param.learningFrames;
 }
 
 void DPWrenGABGS::process(const cv::Mat &img_input, cv::Mat &img_output, cv::Mat &img_bgmodel)

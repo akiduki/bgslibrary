@@ -21,11 +21,27 @@ along with BGSLibrary.  If not, see <http://www.gnu.org/licenses/>.
 class IBGS
 {
 public:
-  virtual void process(const cv::Mat &img_input, cv::Mat &img_foreground, cv::Mat &img_background) = 0;
+    virtual void process(const cv::Mat &img_input, cv::Mat &img_foreground, cv::Mat &img_background) = 0;
   /*virtual void process(const cv::Mat &img_input, cv::Mat &img_foreground){
     process(img_input, img_foreground, cv::Mat());
   }*/
-  virtual ~IBGS(){}
+    virtual ~IBGS(){}
+
+    struct parameters_t
+    {
+        bool firstTime;    
+        bool showOutput;
+        bool showForeground;
+        bool showBackground;
+        bool saveModel;
+        bool disableLearning;
+        bool disableDetectMode;
+        std::string preload_model;
+	// DPWrenGABGS and DPEigenBackgroundBGS only
+	int learningFrames;
+    };
+
+    virtual void setParameters(const parameters_t _param) = 0;
 
 private:
   virtual void saveConfig() = 0;

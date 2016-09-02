@@ -28,6 +28,16 @@ MultiLayerBGS::~MultiLayerBGS()
   std::cout << "~MultiLayerBGS()" << std::endl;
 }
 
+void MultiLayerBGS::setParameters(const parameters_t _param)
+{
+    firstTime = _param.firstTime;
+    showOutput = _param.showOutput;
+    saveModel = _param.saveModel;
+    disableDetectMode = _param.disableDetectMode;
+    disableLearning = _param.disableLearning;
+    bg_model_preload = _param.preload_model;
+}
+
 void MultiLayerBGS::setStatus(Status _status)
 {
   status = _status;
@@ -78,6 +88,7 @@ void MultiLayerBGS::process(const cv::Mat &img_input, cv::Mat &img_output, cv::M
       std::cout << "MultiLayerBGS in DETECT mode" << std::endl;
 
     org_img = new IplImage(img_input);
+    
 
     fg_img = cvCreateImage(img_size, org_img->depth, org_img->nChannels);
     bg_img = cvCreateImage(img_size, org_img->depth, org_img->nChannels);
@@ -230,6 +241,7 @@ void MultiLayerBGS::process(const cv::Mat &img_input, cv::Mat &img_output, cv::M
 
   img_merged = cv::Mat(merged_img);
   img_foreground = cv::Mat(fg_mask_img);
+  //img_foreground = cv::Mat(fg_img); // output a 3-channel color image
   img_background = cv::Mat(bg_img);
 
   if (showOutput)
@@ -237,8 +249,9 @@ void MultiLayerBGS::process(const cv::Mat &img_input, cv::Mat &img_output, cv::M
     cv::imshow("MLBGS Layers", img_merged);
     cv::imshow("MLBGS FG Mask", img_foreground);
   }
-
-  img_foreground.copyTo(img_output);
+  
+  cv::cvtColor(img_foreground, img_output, CV_GRAY2BGR);
+  //img_foreground.copyTo(img_output);
   img_background.copyTo(img_bgmodel);
 
   delete img;

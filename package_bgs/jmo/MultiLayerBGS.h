@@ -33,6 +33,7 @@ public:
     MLBGS_DETECT = 1
   };
 
+
 private:
   bool firstTime;
   long long frameNumber;
@@ -91,6 +92,7 @@ public:
   MultiLayerBGS();
   ~MultiLayerBGS();
 
+  void setParameters(const parameters_t _param);
   void setStatus(Status status);
   void process(const cv::Mat &img_input, cv::Mat &img_output, cv::Mat &img_bgmodel);
 
