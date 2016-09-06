@@ -1,3 +1,21 @@
+Python wrapper for BGSLibrary
+
+Forked repo with added wrapper functions for various best performing background modeling algorithms.
+
+To call the function in Python, first cmake to compile the relavent libraries (for Linux, in examples_linux, and for Mac, in examples_macosx); then copy the dynamic libraries with the Python wrapper class to your source. Remember to mkdir a subfolder named config in your source folder, for recording the algorithm parameters for various algorithms.
+
+Available wrapped algorithms:
+
+* AdaptiveBackgroundLearning (package_bgs/AdaptiveBackgroundLearning.h)
+* MultiLayerBGS (package_bgs/jmo/MultiLayerBGS.h)
+* AdaptiveSOM (package_bgs/lb/LBAdaptiveSOM.h)
+* LBMoG (package_bgs/lb/LBMixtureOfGaussians.h)
+* WrenGABGS (package_bgs/dp/DPWrenGABGS.h)
+* EigenBackground (package_bgs/dp/DPEigenbackgroundBGS.h)
+
+See below for the original README.
+
+==========
 BGSLibrary
 ==========
 
