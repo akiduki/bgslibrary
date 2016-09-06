@@ -32,16 +32,24 @@ class BackGroundModel(object):
         try:
             # pre-requistie: lib must exist
             self.bgMethod = C.cdll.LoadLibrary(method_name)
+            self.method_name = method
         except IOError as e:
             print e
             print "Make sure the compiled libraries are in the same folder of your source"
 
     # to be adaptive changed
     def setParameters(self, param):
-        args, _, _ = inspect.getargs(self.bgMethod.setParameters)
-        self.bgMethod.setParameters(param['firstTime'], param['showOutput'], 
-                                    param['saveModel'], param['disableDetectMode'],
-                                    param['disableLearning'], param['preload_model'])
+        # check method_name, trim the param dict accordingly
+        try:
+            if self.method_name == 'wrenBGS' or self.method_name == 'eigenBGS':
+                self.bgMethod.setParameters(param['firstTime'], param['showOutput'], param['learningFrames'])
+            elif self.method_name == 'mlayerBGS':
+                self.bgMethod.setParameters(param['firstTime'], param['showOutput'], param['saveModel'],
+                                            param['disableDetectMode'], param['disableLearning'], param['preload_model'])
+            else:
+                self.bgMethod.setParameters(param['firstTime'], param['showOutput'])
+        except:
+            print "Something is wrong when loading parameters"
 
     def modifyParameters(self, XMLfile, param):
         # support parameter modification through XML config files
