@@ -4,7 +4,6 @@ package_bgs/pt/
 java_gui/dist/
 java_gui/build/
 java_gui/bgslibrary.exe
-python/
 qt_gui/
 fet/etc/
 *.exe
